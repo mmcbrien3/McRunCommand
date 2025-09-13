@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm /tmp/ascii_art
+
 cat > /tmp/ascii_art << 'EOF'
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⣀⣀⣠⠤⠴⠶⠶⠒⠒⠒⠒⠒⠲⣶
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⢴⢾⣿⣟⣷⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿
@@ -30,20 +32,13 @@ cat > /tmp/ascii_art << 'EOF'
 ⠀⡎⢀⡤⠒⠋⠻⠶⠯⠕⠊⠙⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡞⢀⣠⠖⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⣷⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠟⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠘⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-┏━┓┏━┓┏━╸╻┏ ┏━╸╺┳╸┏━┓╻ ╻╻┏━┓
-┣┳┛┃ ┃┃  ┣┻┓┣╸  ┃ ┗━┓┣━┫┃┣━┛
-╹┗╸┗━┛┗━╸╹ ╹┗━╸ ╹ ┗━┛╹ ╹╹╹  
 EOF
 
-QUOTE_COUNT=$(cat quotes.txt | jq 'length')
+QUOTE_COUNT=$(cat $ZSH_CUSTOMIZATION_PATH/quotes.txt | jq 'length')
 ARRAY_BOUND=$(expr $QUOTE_COUNT - 1)
 RANDOM_NUMBER=$(( RANDOM % ($ARRAY_BOUND + 1) ))
 
-QUOTE=$(cat quotes.txt | jq ".[$RANDOM_NUMBER] | .quote")
-AUTHOR=$(cat quotes.txt | jq ".[$RANDOM_NUMBER] | .author" | sed 's/"//g')
+QUOTE=$(cat $ZSH_CUSTOMIZATION_PATH/quotes.txt | jq ".[$RANDOM_NUMBER] | .quote")
+AUTHOR=$(cat $ZSH_CUSTOMIZATION_PATH/quotes.txt | jq ".[$RANDOM_NUMBER] | .author" | sed 's/"//g')
 
 echo -e "\n$QUOTE\n- $AUTHOR" >> /tmp/ascii_art
-
-tmux send-keys -t dev "clear && cat /tmp/ascii_art" Enter
-

@@ -8,10 +8,12 @@ pkill -f tmux
 tmux new-session -s dev -d
 
 ### Mac Window
-tmux new-window
 tmux rename-window MacBook
 tmux split-pane -h
 tmux select-pane -t 0
 
+$ZSH_CUSTOMIZATION_PATH/display_message.sh
+tmux send-keys -t dev 'clear && cat /tmp/ascii_art' Enter
+
 ### Attach to session
-tmux attach-session -t dev
+exec tmux attach -t dev
