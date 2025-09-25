@@ -1,4 +1,4 @@
-CUSTOM_EXPORTS_PATH="~/a/path/that/does/not/exist/random11/string/exports.sh"
+CUSTOM_EXPORTS_PATH="$ZSH_CUSTOMIZATION_OVERRIDES_DIR/exports.sh"
 
 if [ -e "$CUSTOM_EXPORTS_PATH" ]; then
     source $CUSTOM_EXPORTS_PATH

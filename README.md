@@ -23,10 +23,10 @@ Overwrite `~/.tmux.conf` with contents of `tmux.conf` from this package
 
 *I want to define an additional alias, function, etc.* 
 
-Go to the relevant file and uncomment the line that looks like
+Add the following to your root `.zshrc`. This must point to a directory with `aliases.sh`, `functions.sh`, etc. defined
 
 ```bash
-# source <path_to_your_custom_stuff>
+export ZSH_CUSTOMIZATION_OVERRIDES_DIR="/path/to/dir"
 ```
 
 *I want to customize the image that is displayed on startup of dmux*

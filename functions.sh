@@ -8,7 +8,7 @@ every () {
     while true; do ${@:2} && sleep $1; done;
 }
 
-CUSTOM_FUNCTIONS_PATH="~/this/path/does/not/exist/random1string/functions.sh"
+CUSTOM_FUNCTIONS_PATH="$ZSH_CUSTOMIZATION_OVERRIDES_DIR/functions.sh"
 
 if [ -e "$CUSTOM_FUNCTIONS_PATH" ]; then
     source $CUSTOM_FUNCTIONS_PATH
