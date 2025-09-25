@@ -9,6 +9,8 @@ source $ZSH_CUSTOMIZATION_PATH/zsh.sh
 ## Add alias overrides here
 ```
 
+Overwrite `~/.tmux.conf` with contents of `tmux.conf` from this package
+
 ### Packages to install
 - tmux
 - fzf: https://github.com/junegunn/fzf?tab=readme-ov-file#installation
@@ -16,3 +18,17 @@ source $ZSH_CUSTOMIZATION_PATH/zsh.sh
 - zsh-syntax-highlighting OhMyZsh plugin: https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 - zsh-autosuggestions OhMyZsh plugin: https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#homebrew
 - dracula iterm theme: https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/schemes/Dracula.itermcolors
+
+### Customizing
+
+*I want to define an additional alias, function, etc.* 
+
+Go to the relevant file and uncomment the line that looks like
+
+```bash
+# source <path_to_your_custom_stuff>
+```
+
+*I want to customize the image that is displayed on startup of dmux*
+
+Go to `display_message.sh` and edit directly.
